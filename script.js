@@ -12,7 +12,8 @@ document.querySelector('.player');
 document.querySelector('.player--1');
 document.getElementById('name--1');
 const scoreEl1 = document.getElementById('score--1');
-document.getElementById('current--1');
+const current0El = document.getElementById('current--0');
+const current1El = document.getElementById('current--1');
 const diceEl = document.querySelector('.dice');
 document.querySelector('.btn');
 const btnNew = document.querySelector('.btn--new');
@@ -23,8 +24,20 @@ scoreEl0.textContent = 0;
 scoreEl1.textContent = 0;
 diceEl.classList.add('hidden');
 
+const scores = [0,0]
+let currentScore = 0;
+let activePlayer = 0;
+
 btnRoll.addEventListener('click', function(){
 	const dice = Math.trunc(Math.random() * 6 + 1);
 	 diceEl.classList.remove('hidden');
-	 diceEl.src = `dice-${dice}.png` 
+	 diceEl.src = `dice-${dice}.png`;
+
+	 if (dice !== 1){
+		currentScore += dice;
+		document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+	 }else{
+		activePlayer = activePlayer === 0 ? 1 : 0;
+
+	 }
 })
