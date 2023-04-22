@@ -15,10 +15,16 @@ const scoreEl1 = document.getElementById('score--1');
 document.getElementById('current--1');
 const diceEl = document.querySelector('.dice');
 document.querySelector('.btn');
-document.querySelector('.btn--new');
-document.querySelector('.btn--roll');
-document.querySelector('.btn--hold');
+const btnNew = document.querySelector('.btn--new');
+const btnRoll = document.querySelector('.btn--roll');
+const btnHold = document.querySelector('.btn--hold');
 
 scoreEl0.textContent = 0;
 scoreEl1.textContent = 0;
-diceEl.classList.add('hidden')
+diceEl.classList.add('hidden');
+
+btnRoll.addEventListener('click', function(){
+	const dice = Math.trunc(Math.random() * 6 + 1);
+	 diceEl.classList.remove('hidden');
+	 diceEl.src = `dice-${dice}.png` 
+})
